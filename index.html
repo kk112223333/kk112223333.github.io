@@ -3624,20 +3624,10 @@
       });
     }
 
-    async function apiPost(action, payload = {}) {
-      const body = JSON.stringify({
-        action,
-        ...payload
+    function apiWrite(action, payload = {}) {
+      return apiJsonp(action, {
+        payload: JSON.stringify(payload)
       });
-
-      await fetch(normalizeApiUrl_(), {
-        method: 'POST',
-        mode: 'no-cors',
-        body
-      });
-
-      // Apps Script 반영 직후 바로 다시 읽으면 이전 캐시를 볼 수 있어 짧게 대기
-      await new Promise(resolve => window.setTimeout(resolve, 700));
     }
 
     function showLoadError(error) {
@@ -4304,46 +4294,63 @@
 
     async function toggleFavoriteItem(event, index) {
       event.stopPropagation();
-
+    
       const item = works[index];
-
+    
       if (!item) return;
-
-      const nextValue = !item.favorite;
+    
       const targetRowNumber = item.rowNumber;
-
+      const beforeValue = item.favorite;
+      const nextValue = !beforeValue;
+    
+      // 화면 먼저 즉시 반영
+      item.favorite = nextValue;
+      renderWorks();
+    
+      if (!isMobileView() && selectedIndex === index) {
+        drawDetail(item);
+      }
+    
       try {
-        await apiPost('updateFavorite', {
+        const savedWork = await apiWrite('updateFavorite', {
           rowNumber: targetRowNumber,
           favoriteValue: nextValue
         });
-
-        await loadWorksFromServer({
-          keepSelectedRowNumber: selectedIndex === index ? targetRowNumber : null
-        });
-
-        const updatedIndex = works.findIndex(work => String(work.rowNumber) === String(targetRowNumber));
-        const updatedItem = updatedIndex >= 0 ? works[updatedIndex] : null;
-
-        if (!updatedItem) return;
-
-        if (!isMobileView() && selectedIndex === updatedIndex) {
-          drawDetail(updatedItem);
+    
+        const updatedIndex = works.findIndex(
+          work => String(work.rowNumber) === String(targetRowNumber)
+        );
+    
+        if (updatedIndex >= 0) {
+          works[updatedIndex] = savedWork;
+          selectedIndex = selectedIndex === index ? updatedIndex : selectedIndex;
         }
-
+    
+        refreshFilterSources();
+        drawFilterOptions();
+        renderWorks();
+    
+        if (!isMobileView() && selectedIndex === updatedIndex) {
+          drawDetail(savedWork);
+        }
+    
         if (isMobileView()) {
           const modalBg = document.getElementById('mobileModalBg');
-
+    
           if (modalBg.style.display === 'flex' && selectedIndex === updatedIndex) {
-            document.getElementById('mobileModalContent').innerHTML = detailHtml(updatedItem);
+            document.getElementById('mobileModalContent').innerHTML = detailHtml(savedWork);
           }
         }
       } catch (error) {
+        // 실패하면 원래 값으로 되돌림
+        item.favorite = beforeValue;
+        renderWorks();
+    
         const message =
           error && error.message
             ? error.message
             : JSON.stringify(error);
-
+    
         alert(`즐겨찾기 변경 실패\n${message}`);
       }
     }
@@ -4994,34 +5001,36 @@
         imageUrl: document.getElementById('editImageUrl').value.trim()
       };
 
-      const beforeRowNumbers = new Set(works.map(work => String(work.rowNumber)));
       const targetRowNumber = isCreateMode ? null : item.rowNumber;
 
-      apiPost(isCreateMode ? 'addWork' : 'updateWork', {
+      apiWrite(isCreateMode ? 'addWork' : 'updateWork', {
         rowNumber: targetRowNumber,
         work: updatedWork
       })
-        .then(() => apiJsonp('getWorks'))
-        .then(data => {
-          works = Array.isArray(data) ? data : [];
-
+        .then(savedWork => {
           if (isCreateMode) {
-            const newIndex = works.findIndex(work => !beforeRowNumbers.has(String(work.rowNumber)));
-            selectedIndex = newIndex >= 0 ? newIndex : works.length - 1;
+            works.push(savedWork);
+            selectedIndex = works.length - 1;
           } else {
-            const updatedIndex = works.findIndex(work => String(work.rowNumber) === String(targetRowNumber));
-            selectedIndex = updatedIndex >= 0 ? updatedIndex : null;
+            const updatedIndex = works.findIndex(
+              work => String(work.rowNumber) === String(targetRowNumber)
+            );
+      
+            if (updatedIndex >= 0) {
+              works[updatedIndex] = savedWork;
+              selectedIndex = updatedIndex;
+            }
           }
-
+      
           refreshFilterSources();
           drawFilterOptions();
           hideEditModal();
           renderWorks();
-
+      
           if (!isMobileView() && selectedIndex !== null && works[selectedIndex]) {
             drawDetail(works[selectedIndex]);
           }
-
+      
           saveBtn.disabled = false;
           saveBtn.textContent = '저장';
         })
