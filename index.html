@@ -3546,11 +3546,15 @@
 
     function normalizeApiUrl_() {
       const url = String(API_URL || '').trim();
-
-      if (!url || url === 'https://script.google.com/macros/s/AKfycbyxfFD6-3J1BZ-mCTn7rbQqXVt0gSN4hm7ec9LJw2SfzvM3kBAoIl2wzbOQ83MZ4417aA/exec') {
+    
+      if (!url) {
         throw new Error('index.html의 API_URL에 Apps Script 웹 앱 URL을 넣어주세요.');
       }
-
+    
+      if (!url.startsWith('https://script.google.com/macros/s/') || !url.endsWith('/exec')) {
+        throw new Error('Apps Script 웹 앱 URL은 https://script.google.com/macros/s/.../exec 형식이어야 합니다.');
+      }
+    
       return url;
     }
 
