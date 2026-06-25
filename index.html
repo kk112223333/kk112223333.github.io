@@ -3240,6 +3240,970 @@
             text-size-adjust: 100% !important;
           }
         }
+
+
+        /* ==============================
+           모바일 최종 컴팩트 보정
+           - PC 기본 스타일은 변경하지 않음
+           - 기존 모바일 확대값을 정상 크기로 재정리
+        ============================== */
+        @media (max-width: 1100px), (hover: none) and (pointer: coarse), screen and (max-device-width: 1100px) {
+          html,
+          body,
+          body.mobile-view,
+          body.real-phone-view,
+          body.giant-mobile-view {
+            width: 100% !important;
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+            font-size: 16px !important;
+          }
+
+          .app,
+          body.mobile-view .app,
+          body.real-phone-view .app,
+          body.giant-mobile-view .app {
+            width: 100% !important;
+            max-width: none !important;
+            height: var(--app-height, 100dvh) !important;
+            min-height: 0 !important;
+            padding: calc(10px + env(safe-area-inset-top)) 10px calc(10px + env(safe-area-inset-bottom)) !important;
+            gap: 10px !important;
+            overflow: hidden !important;
+          }
+
+          input,
+          select,
+          textarea,
+          button,
+          .search-input,
+          #titleSearchInput,
+          #tagSearchInput,
+          #editTagSearchInput,
+          .edit-input,
+          .edit-select,
+          .edit-textarea {
+            font-size: 16px !important;
+            -webkit-text-size-adjust: 100% !important;
+            text-size-adjust: 100% !important;
+            transform: none !important;
+            -webkit-transform: none !important;
+            zoom: 1 !important;
+          }
+
+          .filter-box,
+          body.mobile-view .filter-box,
+          body.real-phone-view .filter-box {
+            width: 100% !important;
+            display: grid !important;
+            grid-template-columns: minmax(0, 1fr) auto !important;
+            gap: 8px !important;
+            padding: 10px !important;
+            border-radius: 18px !important;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08) !important;
+          }
+
+          .search-input,
+          body.mobile-view .search-input,
+          body.real-phone-view .search-input,
+          #titleSearchInput.search-input,
+          #titleSearchInput.search-input:focus,
+          #titleSearchInput.search-input:active,
+          html.mobile-device-view #titleSearchInput.search-input,
+          html.mobile-device-view #titleSearchInput.search-input:focus,
+          html.ios-view #titleSearchInput.search-input,
+          html.ios-view #titleSearchInput.search-input:focus {
+            height: 46px !important;
+            min-height: 46px !important;
+            line-height: 46px !important;
+            font-size: 16px !important;
+            border-radius: 12px !important;
+            padding-left: 14px !important;
+            padding-right: 42px !important;
+          }
+
+          .search-clear-btn,
+          body.mobile-view .search-clear-btn,
+          body.real-phone-view .search-clear-btn {
+            width: 28px !important;
+            height: 28px !important;
+            right: 10px !important;
+            font-size: 24px !important;
+            line-height: 28px !important;
+          }
+
+          .icon-buttons,
+          body.mobile-view .icon-buttons,
+          body.real-phone-view .icon-buttons {
+            gap: 8px !important;
+          }
+
+          .icon-btn,
+          body.mobile-view .icon-btn,
+          body.real-phone-view .icon-btn {
+            width: 46px !important;
+            height: 46px !important;
+            border-radius: 12px !important;
+          }
+
+          .icon-btn svg,
+          body.mobile-view .icon-btn svg,
+          body.real-phone-view .icon-btn svg {
+            width: 22px !important;
+            height: 22px !important;
+          }
+
+          .content-layout,
+          body.mobile-view .content-layout,
+          body.real-phone-view .content-layout {
+            flex: 1 !important;
+            min-height: 0 !important;
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 0 !important;
+            overflow: hidden !important;
+          }
+
+          .detail-panel,
+          body.mobile-view .detail-panel,
+          body.real-phone-view .detail-panel {
+            display: none !important;
+          }
+
+          .list-panel,
+          body.mobile-view .list-panel,
+          body.real-phone-view .list-panel {
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: 0 !important;
+            width: 100% !important;
+            border-radius: 18px !important;
+            overflow: hidden !important;
+          }
+
+          .list-header,
+          body.mobile-view .list-header,
+          body.real-phone-view .list-header {
+            padding: 10px 12px !important;
+            gap: 8px !important;
+            min-height: 0 !important;
+          }
+
+          #countText,
+          body.mobile-view #countText,
+          body.real-phone-view #countText {
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            color: #555 !important;
+          }
+
+          .list-header-controls,
+          body.mobile-view .list-header-controls,
+          body.real-phone-view .list-header-controls {
+            gap: 6px !important;
+          }
+
+          .sort-wrap select,
+          body.mobile-view .sort-wrap select,
+          body.real-phone-view .sort-wrap select {
+            width: 124px !important;
+            height: 38px !important;
+            min-height: 38px !important;
+            line-height: 38px !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            border-radius: 10px !important;
+            padding-left: 12px !important;
+            padding-right: 34px !important;
+            background-position: calc(100% - 18px) 16px, calc(100% - 13px) 16px !important;
+            background-size: 5px 5px, 5px 5px !important;
+          }
+
+          .list-view-btn,
+          body.mobile-view .list-view-btn,
+          body.real-phone-view .list-view-btn {
+            width: 38px !important;
+            height: 38px !important;
+            border-radius: 10px !important;
+          }
+
+          .list-view-btn svg,
+          body.mobile-view .list-view-btn svg,
+          body.real-phone-view .list-view-btn svg {
+            width: 19px !important;
+            height: 19px !important;
+          }
+
+          .list-scroll,
+          body.mobile-view .list-scroll,
+          body.real-phone-view .list-scroll {
+            flex: 1 !important;
+            min-height: 0 !important;
+            overflow-y: auto !important;
+            padding: 10px 10px 82px !important;
+            -webkit-overflow-scrolling: touch !important;
+          }
+
+          .list-scroll::-webkit-scrollbar,
+          body.mobile-view .list-scroll::-webkit-scrollbar,
+          body.real-phone-view .list-scroll::-webkit-scrollbar {
+            width: 0 !important;
+            height: 0 !important;
+          }
+
+          .grid,
+          body.mobile-view .grid,
+          body.real-phone-view .grid {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 10px !important;
+          }
+
+          .grid.image-mode,
+          body.mobile-view .grid.image-mode,
+          body.real-phone-view .grid.image-mode {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 10px !important;
+          }
+
+          .card,
+          body.mobile-view .card,
+          body.real-phone-view .card {
+            width: 100% !important;
+            min-height: 0 !important;
+            padding: 14px !important;
+            border-radius: 16px !important;
+            transform: none !important;
+            touch-action: manipulation !important;
+          }
+
+          .card-top,
+          body.mobile-view .card-top,
+          body.real-phone-view .card-top {
+            gap: 8px !important;
+            margin-bottom: 8px !important;
+          }
+
+          .card-action-row,
+          body.mobile-view .card-action-row,
+          body.real-phone-view .card-action-row {
+            gap: 8px !important;
+          }
+
+          .title,
+          body.mobile-view .title,
+          body.real-phone-view .title {
+            font-size: 18px !important;
+            line-height: 1.35 !important;
+            font-weight: 800 !important;
+            margin: 7px 0 8px !important;
+          }
+
+          .rating-star,
+          body.mobile-view .rating-star,
+          body.real-phone-view .rating-star {
+            font-size: 16px !important;
+          }
+
+          .tag-pill,
+          body.mobile-view .tag-pill,
+          body.real-phone-view .tag-pill {
+            font-size: 12px !important;
+            line-height: 1.25 !important;
+            padding: 4px 8px !important;
+          }
+
+          .tag-pill-list,
+          body.mobile-view .tag-pill-list,
+          body.real-phone-view .tag-pill-list {
+            gap: 5px !important;
+            margin-top: 8px !important;
+          }
+
+          .review,
+          body.mobile-view .review,
+          body.real-phone-view .review {
+            font-size: 13px !important;
+            line-height: 1.45 !important;
+          }
+
+          .date,
+          body.mobile-view .date,
+          body.real-phone-view .date {
+            font-size: 11px !important;
+            margin-top: 8px !important;
+          }
+
+          .grade-circle,
+          .progress-circle,
+          .favorite,
+          body.mobile-view .grade-circle,
+          body.mobile-view .progress-circle,
+          body.mobile-view .favorite,
+          body.real-phone-view .grade-circle,
+          body.real-phone-view .progress-circle,
+          body.real-phone-view .favorite {
+            width: 28px !important;
+            height: 28px !important;
+          }
+
+          .grade-circle,
+          body.mobile-view .grade-circle,
+          body.real-phone-view .grade-circle {
+            font-size: 11px !important;
+          }
+
+          .progress-circle svg,
+          body.mobile-view .progress-circle svg,
+          body.real-phone-view .progress-circle svg {
+            width: 17px !important;
+            height: 17px !important;
+          }
+
+          .favorite svg,
+          body.mobile-view .favorite svg,
+          body.real-phone-view .favorite svg {
+            width: 23px !important;
+            height: 23px !important;
+          }
+
+          .card.image-card,
+          body.mobile-view .card.image-card,
+          body.real-phone-view .card.image-card {
+            min-height: 0 !important;
+            padding: 8px 8px 10px !important;
+            border-radius: 14px !important;
+          }
+
+          .card.image-card .image-thumb,
+          body.mobile-view .card.image-card .image-thumb,
+          body.real-phone-view .card.image-card .image-thumb {
+            border-radius: 10px !important;
+            margin-bottom: 8px !important;
+          }
+
+          .card.image-card .image-card-title,
+          body.mobile-view .card.image-card .image-card-title,
+          body.real-phone-view .card.image-card .image-card-title {
+            font-size: 15px !important;
+            line-height: 1.32 !important;
+            margin: 0 0 7px !important;
+            font-weight: 800 !important;
+          }
+
+          .card.image-card .image-card-tags,
+          body.mobile-view .card.image-card .image-card-tags,
+          body.real-phone-view .card.image-card .image-card-tags {
+            max-height: 48px !important;
+            overflow: hidden !important;
+          }
+
+          .card.image-card .image-card-tags .tag-pill-list,
+          body.mobile-view .card.image-card .image-card-tags .tag-pill-list,
+          body.real-phone-view .card.image-card .image-card-tags .tag-pill-list {
+            gap: 4px !important;
+            margin-top: 0 !important;
+          }
+
+          .card.image-card .image-card-tags .tag-pill,
+          body.mobile-view .card.image-card .image-card-tags .tag-pill,
+          body.real-phone-view .card.image-card .image-card-tags .tag-pill,
+          .card.image-card .image-card-tags .tag-more-pill,
+          body.mobile-view .card.image-card .image-card-tags .tag-more-pill,
+          body.real-phone-view .card.image-card .image-card-tags .tag-more-pill {
+            font-size: 10px !important;
+            line-height: 1.2 !important;
+            padding: 3px 6px !important;
+          }
+
+          .card.image-card .image-rating-overlay,
+          body.mobile-view .card.image-card .image-rating-overlay,
+          body.real-phone-view .card.image-card .image-rating-overlay {
+            bottom: 8px !important;
+            padding: 3px 5px !important;
+          }
+
+          .card.image-card .image-top-actions,
+          body.mobile-view .card.image-card .image-top-actions,
+          body.real-phone-view .card.image-card .image-top-actions {
+            top: 8px !important;
+            right: 8px !important;
+            gap: 5px !important;
+          }
+
+          .card.image-card .image-rating-overlay .rating-star,
+          body.mobile-view .card.image-card .image-rating-overlay .rating-star,
+          body.real-phone-view .card.image-card .image-rating-overlay .rating-star {
+            font-size: 12px !important;
+          }
+
+          .card.image-card .image-top-actions .grade-circle,
+          .card.image-card .image-top-actions .progress-circle,
+          .card.image-card .image-top-actions .favorite,
+          body.mobile-view .card.image-card .image-top-actions .grade-circle,
+          body.mobile-view .card.image-card .image-top-actions .progress-circle,
+          body.mobile-view .card.image-card .image-top-actions .favorite,
+          body.real-phone-view .card.image-card .image-top-actions .grade-circle,
+          body.real-phone-view .card.image-card .image-top-actions .progress-circle,
+          body.real-phone-view .card.image-card .image-top-actions .favorite {
+            width: 26px !important;
+            height: 26px !important;
+          }
+
+          .card.image-card .image-top-actions .favorite svg,
+          body.mobile-view .card.image-card .image-top-actions .favorite svg,
+          body.real-phone-view .card.image-card .image-top-actions .favorite svg {
+            width: 21px !important;
+            height: 21px !important;
+          }
+
+          .loading,
+          body.mobile-view .loading,
+          body.real-phone-view .loading,
+          .empty,
+          body.mobile-view .empty,
+          body.real-phone-view .empty {
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            line-height: 1.45 !important;
+            padding: 48px 16px !important;
+          }
+
+          .load-more-card,
+          body.mobile-view .load-more-card,
+          body.real-phone-view .load-more-card {
+            min-height: 78px !important;
+            padding: 14px !important;
+            border-radius: 16px !important;
+            gap: 4px !important;
+          }
+
+          .load-more-title,
+          body.mobile-view .load-more-title,
+          body.real-phone-view .load-more-title {
+            font-size: 16px !important;
+            line-height: 1.2 !important;
+          }
+
+          .load-more-count,
+          body.mobile-view .load-more-count,
+          body.real-phone-view .load-more-count {
+            font-size: 12px !important;
+            line-height: 1.2 !important;
+          }
+
+          .create-work-btn,
+          body.mobile-view .create-work-btn,
+          body.real-phone-view .create-work-btn {
+            width: 54px !important;
+            height: 54px !important;
+            right: calc(16px + env(safe-area-inset-right)) !important;
+            bottom: calc(16px + env(safe-area-inset-bottom)) !important;
+            font-size: 34px !important;
+            padding-bottom: 3px !important;
+          }
+
+          .filter-popover,
+          body.mobile-view .filter-popover,
+          body.real-phone-view .filter-popover {
+            width: calc(100vw - 20px) !important;
+            max-width: 430px !important;
+            padding: 12px !important;
+            border-radius: 18px !important;
+          }
+
+          .filter-section,
+          body.mobile-view .filter-section,
+          body.real-phone-view .filter-section {
+            margin-bottom: 10px !important;
+          }
+
+          .filter-options,
+          body.mobile-view .filter-options,
+          body.real-phone-view .filter-options {
+            min-height: 42px !important;
+            gap: 6px !important;
+            padding: 6px !important;
+            border-radius: 14px !important;
+          }
+
+          .filter-chip-btn,
+          body.mobile-view .filter-chip-btn,
+          body.real-phone-view .filter-chip-btn {
+            height: 32px !important;
+            padding: 0 10px !important;
+            border-radius: 10px !important;
+            font-size: 13px !important;
+            line-height: 1.2 !important;
+            font-weight: 500 !important;
+          }
+
+          .tag-input-box,
+          body.mobile-view .tag-input-box,
+          body.real-phone-view .tag-input-box {
+            height: auto !important;
+            min-height: 42px !important;
+            padding: 5px 8px !important;
+            gap: 6px !important;
+            border-radius: 14px !important;
+          }
+
+          .selected-tags,
+          body.mobile-view .selected-tags,
+          body.real-phone-view .selected-tags {
+            gap: 6px !important;
+          }
+
+          #tagSearchInput,
+          #tagSearchInput:focus,
+          #tagSearchInput:active,
+          body.mobile-view #tagSearchInput,
+          body.mobile-view #tagSearchInput:focus,
+          body.real-phone-view #tagSearchInput,
+          body.real-phone-view #tagSearchInput:focus,
+          html.mobile-device-view #tagSearchInput,
+          html.mobile-device-view #tagSearchInput:focus,
+          html.ios-view #tagSearchInput,
+          html.ios-view #tagSearchInput:focus {
+            height: 30px !important;
+            min-width: 90px !important;
+            font-size: 16px !important;
+            line-height: 30px !important;
+            transform: translateZ(0) scale(1) !important;
+            -webkit-transform: translateZ(0) scale(1) !important;
+            zoom: 1 !important;
+          }
+
+          .tag-input-box .tag-chip,
+          body.mobile-view .tag-input-box .tag-chip,
+          body.real-phone-view .tag-input-box .tag-chip {
+            min-height: 26px !important;
+            height: auto !important;
+            font-size: 12px !important;
+            line-height: 1.2 !important;
+            padding: 5px 8px !important;
+            gap: 5px !important;
+          }
+
+          .tag-input-box .tag-chip button,
+          body.mobile-view .tag-input-box .tag-chip button,
+          body.real-phone-view .tag-input-box .tag-chip button {
+            width: 16px !important;
+            height: 16px !important;
+            font-size: 12px !important;
+            line-height: 16px !important;
+          }
+
+          .tag-suggestions,
+          body.mobile-view .tag-suggestions,
+          body.real-phone-view .tag-suggestions,
+          .edit-tag-suggestions,
+          body.mobile-view .edit-tag-suggestions,
+          body.real-phone-view .edit-tag-suggestions {
+            top: calc(100% + 6px) !important;
+            max-height: 190px !important;
+            border-radius: 12px !important;
+          }
+
+          .tag-suggestions .tag-suggestion-item,
+          .tag-suggestions .tag-suggestion-empty,
+          .edit-tag-suggestions .tag-suggestion-item,
+          .edit-tag-suggestions .tag-suggestion-empty,
+          body.mobile-view .tag-suggestions .tag-suggestion-item,
+          body.mobile-view .tag-suggestions .tag-suggestion-empty,
+          body.real-phone-view .tag-suggestions .tag-suggestion-item,
+          body.real-phone-view .tag-suggestions .tag-suggestion-empty {
+            font-size: 13px !important;
+            line-height: 1.35 !important;
+            font-weight: 400 !important;
+            padding: 10px 12px !important;
+          }
+
+          .mobile-modal-bg,
+          .edit-modal-bg,
+          body.mobile-view .mobile-modal-bg,
+          body.mobile-view .edit-modal-bg,
+          body.real-phone-view .mobile-modal-bg,
+          body.real-phone-view .edit-modal-bg {
+            padding: 8px !important;
+            overflow-x: hidden !important;
+          }
+
+          .mobile-modal,
+          .edit-modal,
+          body.mobile-view .mobile-modal,
+          body.mobile-view .edit-modal,
+          body.real-phone-view .mobile-modal,
+          body.real-phone-view .edit-modal {
+            width: 100% !important;
+            max-width: none !important;
+            max-height: calc(var(--app-height, 100dvh) - 16px) !important;
+            border-radius: 18px !important;
+            overflow-x: hidden !important;
+          }
+
+          .mobile-modal .detail-header,
+          body.mobile-view .mobile-modal .detail-header,
+          body.real-phone-view .mobile-modal .detail-header {
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 10 !important;
+            background: white !important;
+            padding: 10px 12px !important;
+            gap: 8px !important;
+          }
+
+          .mobile-modal .detail-header-title,
+          body.mobile-view .mobile-modal .detail-header-title,
+          body.real-phone-view .mobile-modal .detail-header-title {
+            flex: 1 !important;
+            white-space: normal !important;
+            overflow: visible !important;
+            text-overflow: clip !important;
+            word-break: keep-all !important;
+            overflow-wrap: anywhere !important;
+            font-size: 18px !important;
+            line-height: 1.35 !important;
+          }
+
+          .mobile-modal .detail-header-actions,
+          body.mobile-view .mobile-modal .detail-header-actions,
+          body.real-phone-view .mobile-modal .detail-header-actions {
+            gap: 6px !important;
+          }
+
+          .mobile-modal .detail-edit-btn,
+          .mobile-modal .detail-close-btn,
+          .mobile-modal .detail-header .favorite,
+          body.mobile-view .mobile-modal .detail-edit-btn,
+          body.mobile-view .mobile-modal .detail-close-btn,
+          body.mobile-view .mobile-modal .detail-header .favorite,
+          body.real-phone-view .mobile-modal .detail-edit-btn,
+          body.real-phone-view .mobile-modal .detail-close-btn,
+          body.real-phone-view .mobile-modal .detail-header .favorite {
+            width: 38px !important;
+            height: 38px !important;
+            border-radius: 10px !important;
+          }
+
+          .mobile-modal .detail-edit-btn svg,
+          body.mobile-view .mobile-modal .detail-edit-btn svg,
+          body.real-phone-view .mobile-modal .detail-edit-btn svg {
+            width: 20px !important;
+            height: 20px !important;
+          }
+
+          .mobile-modal .detail-close-btn .close-mark,
+          body.mobile-view .mobile-modal .detail-close-btn .close-mark,
+          body.real-phone-view .mobile-modal .detail-close-btn .close-mark {
+            font-size: 30px !important;
+            line-height: 1 !important;
+            transform: translateY(-1px) !important;
+          }
+
+          .detail-body,
+          body.mobile-view .detail-body,
+          body.real-phone-view .detail-body {
+            padding: 12px !important;
+          }
+
+          .detail-wrap,
+          body.mobile-view .detail-wrap,
+          body.real-phone-view .detail-wrap {
+            padding: 0 !important;
+          }
+
+          .detail-layout,
+          body.mobile-view .detail-layout,
+          body.real-phone-view .detail-layout {
+            display: block !important;
+          }
+
+          .detail-image-wrap,
+          body.mobile-view .detail-image-wrap,
+          body.real-phone-view .detail-image-wrap {
+            width: 100% !important;
+            height: auto !important;
+            min-height: 0 !important;
+            aspect-ratio: 3 / 4 !important;
+            margin-bottom: 14px !important;
+            border-radius: 16px !important;
+          }
+
+          .detail-image-placeholder,
+          body.mobile-view .detail-image-placeholder,
+          body.real-phone-view .detail-image-placeholder,
+          .image-thumb-placeholder,
+          body.mobile-view .image-thumb-placeholder,
+          body.real-phone-view .image-thumb-placeholder {
+            font-size: 15px !important;
+            line-height: 1.4 !important;
+            padding: 14px !important;
+          }
+
+          .mobile-modal .detail-image-grade,
+          body.mobile-view .mobile-modal .detail-image-grade,
+          body.real-phone-view .mobile-modal .detail-image-grade {
+            top: 12px !important;
+            left: 12px !important;
+          }
+
+          .mobile-modal .detail-image-rating,
+          body.mobile-view .mobile-modal .detail-image-rating,
+          body.real-phone-view .mobile-modal .detail-image-rating {
+            bottom: 12px !important;
+            padding: 4px 7px !important;
+          }
+
+          .mobile-modal .detail-image-rating .rating-star,
+          body.mobile-view .mobile-modal .detail-image-rating .rating-star,
+          body.real-phone-view .mobile-modal .detail-image-rating .rating-star {
+            font-size: 16px !important;
+          }
+
+          .detail-line,
+          body.mobile-view .detail-line,
+          body.real-phone-view .detail-line {
+            grid-template-columns: 78px minmax(0, 1fr) !important;
+            column-gap: 10px !important;
+            align-items: start !important;
+            min-height: 0 !important;
+            padding: 7px 0 !important;
+            font-size: 14px !important;
+          }
+
+          .detail-line-title,
+          .detail-line-value,
+          body.mobile-view .detail-line-title,
+          body.mobile-view .detail-line-value,
+          body.real-phone-view .detail-line-title,
+          body.real-phone-view .detail-line-value {
+            font-size: 14px !important;
+            line-height: 1.45 !important;
+          }
+
+          .detail-line-title,
+          body.mobile-view .detail-line-title,
+          body.real-phone-view .detail-line-title {
+            min-width: 0 !important;
+            white-space: nowrap !important;
+            color: #777 !important;
+          }
+
+          .detail-line-value,
+          body.mobile-view .detail-line-value,
+          body.real-phone-view .detail-line-value {
+            min-width: 0 !important;
+            text-align: left !important;
+            overflow-wrap: anywhere !important;
+          }
+
+          .detail-review-box,
+          body.mobile-view .detail-review-box,
+          body.real-phone-view .detail-review-box {
+            margin-top: 14px !important;
+            padding: 14px !important;
+            border-radius: 14px !important;
+          }
+
+          .detail-review-title,
+          .detail-review-content,
+          body.mobile-view .detail-review-title,
+          body.mobile-view .detail-review-content,
+          body.real-phone-view .detail-review-title,
+          body.real-phone-view .detail-review-content {
+            font-size: 14px !important;
+            line-height: 1.45 !important;
+          }
+
+          .detail-review-title,
+          body.mobile-view .detail-review-title,
+          body.real-phone-view .detail-review-title {
+            margin-bottom: 8px !important;
+          }
+
+          .edit-modal-header,
+          body.mobile-view .edit-modal-header,
+          body.real-phone-view .edit-modal-header {
+            padding: 14px 16px !important;
+          }
+
+          .edit-modal-title,
+          body.mobile-view .edit-modal-title,
+          body.real-phone-view .edit-modal-title {
+            font-size: 18px !important;
+            line-height: 1.35 !important;
+          }
+
+          .edit-form-body,
+          body.mobile-view .edit-form-body,
+          body.real-phone-view .edit-form-body {
+            padding: 14px !important;
+          }
+
+          .edit-grid,
+          body.mobile-view .edit-grid,
+          body.real-phone-view .edit-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            gap: 10px !important;
+          }
+
+          .edit-field,
+          .edit-field.full,
+          body.mobile-view .edit-field,
+          body.mobile-view .edit-field.full,
+          body.real-phone-view .edit-field,
+          body.real-phone-view .edit-field.full {
+            grid-column: 1 / -1 !important;
+            gap: 5px !important;
+          }
+
+          .edit-field.mobile-half,
+          body.mobile-view .edit-field.mobile-half,
+          body.real-phone-view .edit-field.mobile-half {
+            grid-column: span 1 !important;
+          }
+
+          .edit-label,
+          body.mobile-view .edit-label,
+          body.real-phone-view .edit-label {
+            font-size: 12px !important;
+            line-height: 1.35 !important;
+            font-weight: 700 !important;
+          }
+
+          .edit-title-favorite-wrap,
+          body.mobile-view .edit-title-favorite-wrap,
+          body.real-phone-view .edit-title-favorite-wrap {
+            grid-template-columns: minmax(0, 1fr) 46px !important;
+            gap: 8px !important;
+            align-items: end !important;
+          }
+
+          .edit-input,
+          .edit-select,
+          body.mobile-view .edit-input,
+          body.mobile-view .edit-select,
+          body.real-phone-view .edit-input,
+          body.real-phone-view .edit-select {
+            height: 44px !important;
+            min-height: 44px !important;
+            line-height: 44px !important;
+            border-radius: 12px !important;
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+            font-size: 16px !important;
+          }
+
+          .edit-select,
+          body.mobile-view .edit-select,
+          body.real-phone-view .edit-select {
+            padding-right: 34px !important;
+            background-position: calc(100% - 18px) 19px, calc(100% - 13px) 19px !important;
+            background-size: 5px 5px, 5px 5px !important;
+          }
+
+          .edit-textarea,
+          body.mobile-view .edit-textarea,
+          body.real-phone-view .edit-textarea {
+            min-height: 104px !important;
+            line-height: 1.45 !important;
+            border-radius: 12px !important;
+            padding: 12px !important;
+            font-size: 16px !important;
+          }
+
+          .edit-favorite-btn,
+          body.mobile-view .edit-favorite-btn,
+          body.real-phone-view .edit-favorite-btn,
+          .edit-toggle-btn,
+          body.mobile-view .edit-toggle-btn,
+          body.real-phone-view .edit-toggle-btn {
+            height: 44px !important;
+            min-height: 44px !important;
+            border-radius: 12px !important;
+            font-size: 14px !important;
+          }
+
+          .edit-favorite-btn,
+          body.mobile-view .edit-favorite-btn,
+          body.real-phone-view .edit-favorite-btn {
+            width: 46px !important;
+          }
+
+          .edit-favorite-btn svg,
+          body.mobile-view .edit-favorite-btn svg,
+          body.real-phone-view .edit-favorite-btn svg {
+            width: 24px !important;
+            height: 24px !important;
+          }
+
+          .edit-toggle-row,
+          body.mobile-view .edit-toggle-row,
+          body.real-phone-view .edit-toggle-row,
+          .edit-pair,
+          body.mobile-view .edit-pair,
+          body.real-phone-view .edit-pair {
+            gap: 8px !important;
+          }
+
+          .edit-rating-stars,
+          body.mobile-view .edit-rating-stars,
+          body.real-phone-view .edit-rating-stars {
+            height: 44px !important;
+            gap: 4px !important;
+          }
+
+          .edit-star-btn,
+          body.mobile-view .edit-star-btn,
+          body.real-phone-view .edit-star-btn {
+            width: 32px !important;
+            height: 32px !important;
+            font-size: 30px !important;
+          }
+
+          .edit-tag-input-box,
+          body.mobile-view .edit-tag-input-box,
+          body.real-phone-view .edit-tag-input-box {
+            min-height: 44px !important;
+            padding: 6px 8px !important;
+            gap: 6px !important;
+            border-radius: 12px !important;
+          }
+
+          #editTagSearchInput,
+          body.mobile-view #editTagSearchInput,
+          body.real-phone-view #editTagSearchInput {
+            height: 30px !important;
+            min-width: 90px !important;
+            font-size: 16px !important;
+            line-height: 30px !important;
+          }
+
+          .edit-selected-tags,
+          body.mobile-view .edit-selected-tags,
+          body.real-phone-view .edit-selected-tags {
+            gap: 6px !important;
+          }
+
+          .edit-actions,
+          body.mobile-view .edit-actions,
+          body.real-phone-view .edit-actions {
+            padding: 10px 14px calc(10px + env(safe-area-inset-bottom)) !important;
+            gap: 8px !important;
+          }
+
+          .edit-action-btn,
+          body.mobile-view .edit-action-btn,
+          body.real-phone-view .edit-action-btn {
+            height: 40px !important;
+            min-width: 70px !important;
+            border-radius: 11px !important;
+            padding: 0 14px !important;
+            font-size: 14px !important;
+          }
+        }
+
 </style>
 
 </head>
@@ -3542,7 +4506,7 @@
       2) 배포 > 배포 관리 > 새 버전 배포
       3) 아래 URL을 본인 웹 앱 URL(/exec)로 바꾸기
     */
-    const API_URL = 'https://script.google.com/macros/s/AKfycbxhSMLFQTgHHrXYHyLjoT1Jv4Zik-l6CfwSxmm3jjHDs8g8oY995GUH0qCcydRgXrZFPw/exec';
+    const API_URL = 'https://script.google.com/macros/s/AKfycbyxfFD6-3J1BZ-mCTn7rbQqXVt0gSN4hm7ec9LJw2SfzvM3kBAoIl2wzbOQ83MZ4417aA/exec';
 
     function normalizeApiUrl_() {
       const url = String(API_URL || '').trim();
